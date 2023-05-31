@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./app
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    stdin_open: true
+    tty: true
+    volumes:
+    - ./data:/app/srv_data
+    - ./data/images:/app/srv_data/images
+    - ./data/images_info:/app/srv_data/images_info
+    - ./data/listings:/app/srv_data/listings
